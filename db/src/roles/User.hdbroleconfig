@@ -1,0 +1,5 @@
+{
+	"sap.devs.demo.Wile.roles::User":{
+		 "Ref1":{            "schema":"Schema1"       }
+	}
+}

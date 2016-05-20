@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.devs.demo.Wile.models::EPISODES_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="EPISODES_ANALYSIS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sap.devs.demo.Wile.data::Episode.Details">
+    <resourceUri>sap.devs.demo.Wile.data::Episode.Details</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="DATE">
+        <descriptions defaultDescription="DATE"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_ID">
+        <descriptions defaultDescription="EPISODE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_NAME">
+        <descriptions defaultDescription="EPISODE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_URL">
+        <descriptions defaultDescription="EPISODE_URL"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_MIN">
+        <descriptions defaultDescription="RUNTIME_MIN"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_SEC">
+        <descriptions defaultDescription="RUNTIME_SEC"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.devs.demo.Wile.data::Episode.Details">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_NAME" source="EPISODE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_URL" source="EPISODE_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_MIN" source="RUNTIME_MIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_SEC" source="RUNTIME_SEC"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="DATE" order="2" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="EPISODE_ID" key="true" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EPISODE_ID"/>
+    </attribute>
+    <attribute id="EPISODE_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EPISODE_NAME"/>
+    </attribute>
+    <attribute id="EPISODE_URL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_URL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EPISODE_URL"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="DAY_OF_WEEK" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY_OF_WEEK"/>
+      <keyCalculation datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>weekday(&quot;DATE&quot;)</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="YEAR" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyCalculation datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>component(&quot;DATE&quot;,1)</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="MONTH" order="11" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyCalculation datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>component(&quot;DATE&quot;,2)</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="DAY_OF_WEEK_DESC" order="12" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY_OF_WEEK_DESC"/>
+      <keyCalculation datatype="NVARCHAR" length="10" expressionLanguage="COLUMN_ENGINE">
+        <formula>case(string(&quot;DAY_OF_WEEK&quot;),'0','SUN',
+                                          '1','MON',
+                                          '2','TUES',
+                                          '3','WED',
+                                          '4','THURS',
+                                          '5','FRI',
+                                          '6','SAT',
+                                          'SUN')</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="RUNTIME_MIN" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RUNTIME_MIN"/>
+      <measureMapping columnObjectName="Projection_1" columnName="RUNTIME_MIN"/>
+    </measure>
+    <measure id="RUNTIME_SEC" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RUNTIME_SEC"/>
+      <measureMapping columnObjectName="Projection_1" columnName="RUNTIME_SEC"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="EPISODES" hidden="false" order="1" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="EPISODES"/>
+      <exceptionAggregation>
+        <attribute attributeName="EPISODE_ID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="TOTAL_RUNTIME_SECS" hidden="false" order="8" aggregationType="sum" measureType="simple" datatype="INTEGER">
+      <descriptions defaultDescription="TOTAL_RUNTIME_SECS"/>
+      <formula>&quot;RUNTIME_MIN&quot; * 60 + &quot;RUNTIME_SEC&quot;</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="226"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

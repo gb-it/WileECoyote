@@ -1,0 +1,2 @@
+SEQUENCE "sap.devs.demo.Wile.data::ACMEItemId" START WITH 1000000100 MAXVALUE 1999999999
+RESET BY SELECT IFNULL(MAX("ITEM_ID"), 1000000100) + 1 FROM "sap.devs.demo.Wile.data::MasterData.ACMEItem"

@@ -1,0 +1,98 @@
+namespace sap.devs.demo.Wile.data;
+using sap.devs.demo.Wile.data::WileECoyote;
+using sap.devs.demo.Wile.data::MasterData as MD;
+
+context Episode {
+
+      Entity Details {
+        key  EPISODE_ID: WileECoyote.BusinessKey;
+        EPISODE_NAME: WileECoyote.LString;
+        EPISODE_URL: WileECoyote.LString;
+        DATE: LocalDate;
+        RUNTIME_MIN: Integer;
+        RUNTIME_SEC: Integer;
+      };
+      
+ 	  Entity Items {
+ 	     key Detail : Association to Details;
+	     key Item : Association to MD.ACMEItem;
+      }; 
+      
+      define view ItemsView as SELECT from Items {
+        Detail.EPISODE_ID,
+        Detail.EPISODE_NAME,
+        Item.ITEM_ID,
+        Item.ITEM,
+        Detail.EPISODE_URL,
+        Detail.DATE,
+        Detail.RUNTIME_MIN,
+        Detail.RUNTIME_SEC
+      };
+
+ 	  Entity RoadRunnerNames {
+ 	     key Detail : Association to Details;
+	     key Name : Association to MD.PseudoLatinNames;
+      }; 
+
+      define view RoadRunnerNamesView as SELECT from RoadRunnerNames {
+        Detail.EPISODE_ID,
+        Detail.EPISODE_NAME,
+        Name.NAME_ID,
+        Name.NAME,
+        Detail.EPISODE_URL,
+        Detail.DATE,
+        Detail.RUNTIME_MIN,
+        Detail.RUNTIME_SEC
+      };
+
+ 	  Entity CoyoteNames {
+ 	     key Detail : Association to Details;
+	     key Name : Association to MD.PseudoLatinNames;
+      }; 
+
+      define view CoyoteNamesView as SELECT from CoyoteNames {
+        Detail.EPISODE_ID,
+        Detail.EPISODE_NAME,
+        Name.NAME_ID,
+        Name.NAME,
+        Detail.EPISODE_URL,
+        Detail.DATE,
+        Detail.RUNTIME_MIN,
+        Detail.RUNTIME_SEC
+      };
+            
+ 	  Entity Writers {
+ 	     key Detail : Association to Details;
+	     key Contributor : Association to MD.Contributors;
+      }; 
+      
+      define view WritersView as SELECT from Writers {
+        Detail.EPISODE_ID,
+        Detail.EPISODE_NAME,
+        Contributor.NAME_ID,
+        Contributor.NAME,
+        Contributor.URL,        
+        Detail.EPISODE_URL,
+        Detail.DATE,
+        Detail.RUNTIME_MIN,
+        Detail.RUNTIME_SEC
+      }; 
+      
+   	  Entity Directors {
+ 	     key Detail : Association to Details;
+	     key Contributor : Association to MD.Contributors;
+      }; 
+      
+      define view DirectorsView as SELECT from Writers {
+        Detail.EPISODE_ID,
+        Detail.EPISODE_NAME,
+        Contributor.NAME_ID,
+        Contributor.NAME,
+        Contributor.URL,        
+        Detail.EPISODE_URL,
+        Detail.DATE,
+        Detail.RUNTIME_MIN,
+        Detail.RUNTIME_SEC
+      };      	
+
+};

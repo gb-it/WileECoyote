@@ -1,0 +1,10 @@
+{
+	"role":{
+		"name": "sap.devs.demo.Wile.roles::User",
+		"schema_privileges":[
+			{
+				"privileges":[ "SELECT", "EXECUTE", "UPDATE", "INSERT", "DELETE", "DEBUG" ]
+			}
+		]
+	}
+}

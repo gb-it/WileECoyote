@@ -1,0 +1,56 @@
+service namespace "sap.devs.demo.Wile.services" { 
+	"sap.devs.demo.Wile.models::EPISODES_ANALYSIS" as "Episodes"
+	keys ("EPISODE_ID") 
+	navigates ("ToACMEItems" as "ACMEItems", 
+	           "ToCoyoteNames" as "CoyoteNames",
+	           "ToRoadRunnerNames" as "RoadRunnerNames",
+	           "ToDirectors" as "Directors", 
+	           "ToWriters" as "Writers"); 
+	
+	"sap.devs.demo.Wile.models::ACME_ITEMS" as "ACMEItems"
+	keys ("EPISODE_ID","ITEM_ID");
+	
+	"sap.devs.demo.Wile.models::ACME_CATALOG" as "ACMECatalog"
+	keys ("ITEM_ID")
+	create using "xsjs:ACMECatalogExits.xsjslib::itemsCreate"
+	update using "xsjs:ACMECatalogExits.xsjslib::itemsUpdate"
+	delete using "xsjs:ACMECatalogExits.xsjslib::itemsDelete";
+
+	
+	"sap.devs.demo.Wile.data::Episode.CoyoteNamesView" as "CoyoteNames"
+		with ("EPISODE_ID","NAME_ID","NAME")	
+	keys ("EPISODE_ID","NAME_ID");
+	
+	"sap.devs.demo.Wile.data::Episode.RoadRunnerNamesView" as "RoadRunnerNames"
+	with ("EPISODE_ID","NAME_ID","NAME")	
+	keys ("EPISODE_ID","NAME_ID");
+
+	"sap.devs.demo.Wile.data::Episode.DirectorsView" as "Directors"
+	with ("EPISODE_ID","NAME_ID","NAME","URL")	
+	keys ("EPISODE_ID","NAME_ID");
+	
+	"sap.devs.demo.Wile.data::Episode.WritersView" as "Writers"
+	with ("EPISODE_ID","NAME_ID","NAME","URL")	
+	keys ("EPISODE_ID","NAME_ID");
+		
+	association "ToACMEItems" principal "Episodes"("EPISODE_ID")
+	  multiplicity "1" 
+	  dependent "ACMEItems"("EPISODE_ID") multiplicity "*";
+	  
+	association "ToCoyoteNames" principal "Episodes"("EPISODE_ID")
+	  multiplicity "1" 
+	  dependent "CoyoteNames"("EPISODE_ID") multiplicity "*";
+	  
+	association "ToRoadRunnerNames" principal "Episodes"("EPISODE_ID")
+	  multiplicity "1" 
+	  dependent "RoadRunnerNames"("EPISODE_ID") multiplicity "*";	  
+
+	association "ToDirectors" principal "Episodes"("EPISODE_ID")
+	  multiplicity "1" 
+	  dependent "Directors"("EPISODE_ID") multiplicity "*";
+	  
+	association "ToWriters" principal "Episodes"("EPISODE_ID")
+	  multiplicity "1" 
+	  dependent "Writers"("EPISODE_ID") multiplicity "*";	
+	  	
+}

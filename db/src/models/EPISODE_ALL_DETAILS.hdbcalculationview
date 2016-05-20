@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.devs.demo.Wile.models::EPISODE_ALL_DETAILS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="EPISODE_ALL_DETAILS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sap.devs.demo.Wile.data::Episode.Details">
+    <resourceUri>sap.devs.demo.Wile.data::Episode.Details</resourceUri>
+  </DataSource>
+  <DataSource id="sap.devs.demo.Wile.models::ACME_ITEMS">
+    <resourceUri>sap.devs.demo.Wile.models::ACME_ITEMS</resourceUri>
+  </DataSource>
+  <DataSource id="sap.devs.demo.Wile.models::ALL_CONTRIBUTORS">
+    <resourceUri>sap.devs.demo.Wile.models::ALL_CONTRIBUTORS</resourceUri>
+  </DataSource>
+  <DataSource id="sap.devs.demo.Wile.models::ALL_NAMES">
+    <resourceUri>sap.devs.demo.Wile.models::ALL_NAMES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="DATE">
+        <descriptions defaultDescription="DATE"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_ID">
+        <descriptions defaultDescription="EPISODE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_NAME">
+        <descriptions defaultDescription="EPISODE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_URL">
+        <descriptions defaultDescription="EPISODE_URL"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_MIN">
+        <descriptions defaultDescription="RUNTIME_MIN"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_SEC">
+        <descriptions defaultDescription="RUNTIME_SEC"/>
+      </viewAttribute>
+      <viewAttribute id="FILE_NAME">
+        <descriptions defaultDescription="FILE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM">
+        <descriptions defaultDescription="ITEM"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM_ID">
+        <descriptions defaultDescription="ITEM_ID"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM_IMAGE_URL">
+        <descriptions defaultDescription="ITEM_IMAGE_URL"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.devs.demo.Wile.data::Episode.Details">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_NAME" source="EPISODE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_URL" source="EPISODE_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_MIN" source="RUNTIME_MIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_SEC" source="RUNTIME_SEC"/>
+    </input>
+    <input node="sap.devs.demo.Wile.models::ACME_ITEMS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILE_NAME" source="FILE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_ID" source="ITEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_IMAGE_URL" source="ITEM_IMAGE_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+    </input>
+    <joinAttribute name="EPISODE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="DATE">
+        <descriptions defaultDescription="DATE"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_ID">
+        <descriptions defaultDescription="EPISODE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_NAME">
+        <descriptions defaultDescription="EPISODE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_URL">
+        <descriptions defaultDescription="EPISODE_URL"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_MIN">
+        <descriptions defaultDescription="RUNTIME_MIN"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_SEC">
+        <descriptions defaultDescription="RUNTIME_SEC"/>
+      </viewAttribute>
+      <viewAttribute id="FILE_NAME">
+        <descriptions defaultDescription="FILE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM">
+        <descriptions defaultDescription="ITEM"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM_ID">
+        <descriptions defaultDescription="ITEM_ID"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM_IMAGE_URL">
+        <descriptions defaultDescription="ITEM_IMAGE_URL"/>
+      </viewAttribute>
+      <viewAttribute id="DIRECTOR_NAME">
+        <descriptions defaultDescription="DIRECTOR_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="DIRECTOR_URL">
+        <descriptions defaultDescription="DIRECTOR_URL"/>
+      </viewAttribute>
+      <viewAttribute id="WRITER_NAME">
+        <descriptions defaultDescription="WRITER_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="WRITER_URL">
+        <descriptions defaultDescription="WRITER_URL"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_NAME" source="EPISODE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_URL" source="EPISODE_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_MIN" source="RUNTIME_MIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_SEC" source="RUNTIME_SEC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILE_NAME" source="FILE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_ID" source="ITEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_IMAGE_URL" source="ITEM_IMAGE_URL"/>
+    </input>
+    <input node="sap.devs.demo.Wile.models::ALL_CONTRIBUTORS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTOR_NAME" source="DIRECTOR_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTOR_URL" source="DIRECTOR_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WRITER_NAME" source="WRITER_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WRITER_URL" source="WRITER_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+    </input>
+    <joinAttribute name="EPISODE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="DATE">
+        <descriptions defaultDescription="DATE"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_ID">
+        <descriptions defaultDescription="EPISODE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_NAME">
+        <descriptions defaultDescription="EPISODE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_URL">
+        <descriptions defaultDescription="EPISODE_URL"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_MIN">
+        <descriptions defaultDescription="RUNTIME_MIN"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_SEC">
+        <descriptions defaultDescription="RUNTIME_SEC"/>
+      </viewAttribute>
+      <viewAttribute id="FILE_NAME">
+        <descriptions defaultDescription="FILE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM">
+        <descriptions defaultDescription="ITEM"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM_ID">
+        <descriptions defaultDescription="ITEM_ID"/>
+      </viewAttribute>
+      <viewAttribute id="ITEM_IMAGE_URL">
+        <descriptions defaultDescription="ITEM_IMAGE_URL"/>
+      </viewAttribute>
+      <viewAttribute id="DIRECTOR_NAME">
+        <descriptions defaultDescription="DIRECTOR_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="DIRECTOR_URL">
+        <descriptions defaultDescription="DIRECTOR_URL"/>
+      </viewAttribute>
+      <viewAttribute id="WRITER_NAME">
+        <descriptions defaultDescription="WRITER_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="WRITER_URL">
+        <descriptions defaultDescription="WRITER_URL"/>
+      </viewAttribute>
+      <viewAttribute id="COYOTE_NAME">
+        <descriptions defaultDescription="COYOTE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="ROADRUNNER_NAME">
+        <descriptions defaultDescription="ROADRUNNER_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_NAME" source="EPISODE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_URL" source="EPISODE_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_MIN" source="RUNTIME_MIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_SEC" source="RUNTIME_SEC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILE_NAME" source="FILE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_ID" source="ITEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_IMAGE_URL" source="ITEM_IMAGE_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTOR_NAME" source="DIRECTOR_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTOR_URL" source="DIRECTOR_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WRITER_NAME" source="WRITER_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WRITER_URL" source="WRITER_URL"/>
+    </input>
+    <input node="sap.devs.demo.Wile.models::ALL_NAMES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="COYOTE_NAME" source="COYOTE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROADRUNNER_NAME" source="ROADRUNNER_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+    </input>
+    <joinAttribute name="EPISODE_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_3">
+  <attributes>
+    <attribute id="DATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Join_3" columnName="DATE"/>
+    </attribute>
+    <attribute id="EPISODE_ID" key="true" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_ID"/>
+      <keyMapping columnObjectName="Join_3" columnName="EPISODE_ID"/>
+    </attribute>
+    <attribute id="EPISODE_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_NAME"/>
+      <keyMapping columnObjectName="Join_3" columnName="EPISODE_NAME"/>
+    </attribute>
+    <attribute id="EPISODE_URL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_URL"/>
+      <keyMapping columnObjectName="Join_3" columnName="EPISODE_URL"/>
+    </attribute>
+    <attribute id="RUNTIME_MIN" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RUNTIME_MIN"/>
+      <keyMapping columnObjectName="Join_3" columnName="RUNTIME_MIN"/>
+    </attribute>
+    <attribute id="RUNTIME_SEC" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RUNTIME_SEC"/>
+      <keyMapping columnObjectName="Join_3" columnName="RUNTIME_SEC"/>
+    </attribute>
+    <attribute id="FILE_NAME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILE_NAME"/>
+      <keyMapping columnObjectName="Join_3" columnName="FILE_NAME"/>
+    </attribute>
+    <attribute id="ITEM" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM"/>
+      <keyMapping columnObjectName="Join_3" columnName="ITEM"/>
+    </attribute>
+    <attribute id="ITEM_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM_ID"/>
+      <keyMapping columnObjectName="Join_3" columnName="ITEM_ID"/>
+    </attribute>
+    <attribute id="ITEM_IMAGE_URL" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM_IMAGE_URL"/>
+      <keyMapping columnObjectName="Join_3" columnName="ITEM_IMAGE_URL"/>
+    </attribute>
+    <attribute id="DIRECTOR_NAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIRECTOR_NAME"/>
+      <keyMapping columnObjectName="Join_3" columnName="DIRECTOR_NAME"/>
+    </attribute>
+    <attribute id="DIRECTOR_URL" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIRECTOR_URL"/>
+      <keyMapping columnObjectName="Join_3" columnName="DIRECTOR_URL"/>
+    </attribute>
+    <attribute id="WRITER_NAME" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WRITER_NAME"/>
+      <keyMapping columnObjectName="Join_3" columnName="WRITER_NAME"/>
+    </attribute>
+    <attribute id="WRITER_URL" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WRITER_URL"/>
+      <keyMapping columnObjectName="Join_3" columnName="WRITER_URL"/>
+    </attribute>
+    <attribute id="COYOTE_NAME" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COYOTE_NAME"/>
+      <keyMapping columnObjectName="Join_3" columnName="COYOTE_NAME"/>
+    </attribute>
+    <attribute id="ROADRUNNER_NAME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ROADRUNNER_NAME"/>
+      <keyMapping columnObjectName="Join_3" columnName="ROADRUNNER_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="396"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.data::Episode.Details" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.models::ACME_ITEMS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="306"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.models::ALL_CONTRIBUTORS" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="190"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.models::ALL_NAMES" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

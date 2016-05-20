@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.devs.demo.Wile.models::ACME_ITEMS_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="ACME_ITEMS_ANALYSIS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sap.devs.demo.Wile.data::Episode.Details">
+    <resourceUri>sap.devs.demo.Wile.data::Episode.Details</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="DATE">
+        <descriptions defaultDescription="DATE"/>
+      </viewAttribute>
+      <viewAttribute id="EPISODE_ID">
+        <descriptions defaultDescription="EPISODE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_MIN">
+        <descriptions defaultDescription="RUNTIME_MIN"/>
+      </viewAttribute>
+      <viewAttribute id="RUNTIME_SEC">
+        <descriptions defaultDescription="RUNTIME_SEC"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.devs.demo.Wile.data::Episode.Details">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="EPISODE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_MIN" source="RUNTIME_MIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RUNTIME_SEC" source="RUNTIME_SEC"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="DATE" hidden="true" order="1" semanticType="empty" displayAttribute="true" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="EPISODE_ID$local">
+      <keyMapping columnObjectName="Projection_1" columnName="EPISODE_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="RUNTIME_MIN" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RUNTIME_MIN"/>
+      <measureMapping columnObjectName="Projection_1" columnName="RUNTIME_MIN"/>
+    </measure>
+    <measure id="RUNTIME_SEC" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RUNTIME_SEC"/>
+      <measureMapping columnObjectName="Projection_1" columnName="RUNTIME_SEC"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="EPISODE_COUNTER" hidden="false" order="4" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="EPISODE_COUNTER"/>
+      <exceptionAggregation>
+        <attribute attributeName="EPISODE_ID" dimensionUri="sap.devs.demo.Wile.models::ACME_ITEMS"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="ITEM_COUNTER" hidden="false" order="5" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="ITEM_COUNTER"/>
+      <exceptionAggregation>
+        <attribute attributeName="ITEM_ID" dimensionUri="sap.devs.demo.Wile.models::ACME_ITEMS"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="sap.devs.demo.Wile.models::ACME_ITEMS">
+      <attributes>
+        <attributeRef>EPISODE_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>EPISODE_ID</attributeName>
+      </associatedAttributeNames>
+      <properties joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="228"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.models::ACME_ITEMS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

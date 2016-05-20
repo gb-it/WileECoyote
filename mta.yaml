@@ -1,0 +1,51 @@
+_schema-version: 2.0.0
+ID: WileECoyote
+description: Wile E. Coyote (Carnivorous Vulgaris) ACME Product Database
+version: 1.12.101
+
+modules:
+- name: db
+  type: hdb
+  path: db
+  requires:
+   - name: hdi-container
+
+- name: web
+  type: html5
+  path: web
+  requires: 
+    - name: wile-uaa
+    - name: nodejs
+      group: destinations
+      properties:
+        name: nodejs
+        url: ~{url}
+        forwardAuthToken: true
+    - name: ui5-lib
+      properties:
+         ui5liburl: ~{url}
+    
+- name: js
+  type: nodejs
+  path: js
+  provides:
+    - name: nodejs
+      properties:
+        url: "${default-url}"
+  requires:
+    - name: wile-uaa
+    - name: db
+    - name: hdi-container
+    
+resources:
+  - name: wile-uaa
+    type: com.sap.xs.uaa
+    parameters:
+      config_path: ./xs-security.json
+  - name: hdi-container
+    type: com.sap.xs.hdi-container
+  - name: ui5-lib
+    type: configuration 
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.1.34:sapui5-1.34 # Specifies the the ID of the provider MTA.
+      version: ">=1.34.8"     # The version (range) of the provider MTA. 

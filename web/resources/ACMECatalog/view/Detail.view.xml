@@ -1,0 +1,43 @@
+<core:View controllerName="view.Detail" xmlns="sap.m" 
+	xmlns:core="sap.ui.core" xmlns:h="http://www.w3.org/1999/xhtml">
+	<Page
+		title="{name}"
+		navButtonText="Items"
+		navButtonPress="navButtonPress"
+		showNavButton="true"
+		icon="{img>/icon/ui5}">
+		<content>
+			<List>
+				<items>
+					<DisplayListItem
+						label="Item"
+						value="{path:'ITEM'}" />
+					<DisplayListItem
+						label="Vendor"
+						value="ACME" />
+					<DisplayListItem
+						label="Item ID"
+						value="{path:'ITEM_ID'}" />
+				</items>
+			</List>
+			<VBox alignItems="Center">
+				<Image
+					src="{ITEM_IMAGE_URL}"
+					decorative="true"
+					densityAware="false" />
+			</VBox>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button
+						icon="sap-icon://delete"
+						press="deleteButtonPress" />
+					<Button
+						icon="sap-icon://edit"
+						press="updateButtonPress" />
+				</contentLeft>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

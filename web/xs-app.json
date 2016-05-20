@@ -1,0 +1,28 @@
+{
+	"welcomeFile": "ACMECatalog/index.html",
+	"authenticationMethod": "route",
+	"routes": [{
+		"source": "/node/(.*)",
+		"destination": "nodejs",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "(.*)(.xsjs)",
+		"destination": "nodejs",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "(.*)(.xsodata)",
+		"destination": "nodejs",
+		"authenticationType": "xsuaa"
+	},
+	{
+		"source": "/(.*)",
+		"localDir": "resources",
+		"replace": {
+			"pathSuffixes": ["index.html"],
+			"vars": ["ui5liburl"]
+		}
+	}
+	]
+}

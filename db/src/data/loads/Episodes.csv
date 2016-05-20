@@ -1,0 +1,49 @@
+EPISODE_ID;EPISODE_NAME;EPISODE_URL;DATE;RUNTIME_MIN;RUNTIME_SEC
+1000000001;Fast and Furry-ous;http://en.wikipedia.org/wiki/Fast_and_Furry-ous;1949-09-17;6;55
+1000000002;Beep, Beep;http://en.wikipedia.org/wiki/Beep,_Beep_(film);1952-05-24;6;45
+1000000003;Going! Going! Gosh!;http://en.wikipedia.org/wiki/Going!_Going!_Gosh!;1952-08-23;6;25
+1000000004;Zipping Along;http://en.wikipedia.org/wiki/Zipping_Along;1953-09-19;6;55
+1000000005;Stop! Look! And Hasten!;http://en.wikipedia.org/wiki/Stop!_Look!_And_Hasten!;1954-08-14;7;00
+1000000006;Ready, Set, Zoom!;http://en.wikipedia.org/wiki/Ready,_Set,_Zoom!;1955-04-30;6;55
+1000000007;Guided Muscle;http://en.wikipedia.org/wiki/Guided_Muscle;1955-12-10;6;40
+1000000008;Gee Whiz-z-z-z-z-z-z;http://en.wikipedia.org/wiki/Gee_Whiz-z-z-z-z-z-z;1956-05-05;6;35
+1000000009;There They Go-Go-Go!;http://en.wikipedia.org/wiki/There_They_Go-Go-Go!;1956-11-10;6;35
+1000000010;Scrambled Aches;http://en.wikipedia.org/wiki/Scrambled_Aches;1957-01-26;6;50
+1000000011;Zoom and Bored;http://en.wikipedia.org/wiki/Zoom_and_Bored;1957-09-14;6;15
+1000000012;Whoa, Be-Gone!;http://en.wikipedia.org/wiki/Whoa,_Be-Gone!;1958-04-12;6;10
+1000000013;Hook, Line and Stinker";http://en.wikipedia.org/wiki/Hook,_Line_and_Stinker;1958-10-11;5;55
+1000000014;Hip Hip-Hurry!;http://en.wikipedia.org/wiki/Hip_Hip-Hurry!;1958-12-06;6;13
+1000000015;Hot-Rod and Reel!;http://en.wikipedia.org/wiki/Hot-Rod_and_Reel!;1959-05-09;6;25
+1000000016;Wild About Hurry;http://en.wikipedia.org/wiki/Wild_About_Hurry;1959-10-10;6;45
+1000000017;Fastest with the Mostest;http://en.wikipedia.org/wiki/Fastest_with_the_Mostest;1960-01-09;7;20
+1000000018;Hopalong Casualty;http://en.wikipedia.org/wiki/Hopalong_Casualty;1960-10-08;6;05
+1000000019;Zip 'N Snort;http://en.wikipedia.org/wiki/Zip_%27N_Snort;1961-01-21;5;50
+1000000020;Lickety-Splat;http://en.wikipedia.org/wiki/Lickety-Splat;1961-06-03;6;20
+1000000021;Beep Prepared;http://en.wikipedia.org/wiki/Beep_Prepared;1961-11-11;6;00
+1000000022;Zoom at the Top;http://en.wikipedia.org/wiki/Zoom_at_the_Top;1962-06-30;6;30
+1000000023;To Beep or Not to Beep;http://en.wikipedia.org/wiki/To_Beep_or_Not_to_Beep;1963-12-28;6;35
+1000000024;War and Pieces;http://en.wikipedia.org/wiki/War_and_Pieces;1964-06-06;6;40
+1000000025;Zip Zip Hooray!;http://en.wikipedia.org/wiki/Zip_Zip_Hooray!;1965-01-01;6;15
+1000000026;Road Runner a Go-Go;http://en.wikipedia.org/wiki/Road_Runner_a_Go-Go;1965-02-01;6;05
+1000000027;The Wild Chase;http://en.wikipedia.org/wiki/The_Wild_Chase;1965-02-27;6;30
+1000000028;Rushing Roulette;http://en.wikipedia.org/wiki/Rushing_Roulette;1965-07-31;6;20
+1000000029;Run, Run, Sweet Road Runner;http://en.wikipedia.org/wiki/Run,_Run,_Sweet_Road_Runner;1965-08-21;6;00
+1000000030;Tired and Feathered;http://en.wikipedia.org/wiki/Tired_and_Feathered;1965-09-18;6;20
+1000000031;Boulder Wham!;http://en.wikipedia.org/wiki/Boulder_Wham!;1965-10-09;6;30
+1000000032;Just Plane Beep;http://en.wikipedia.org/wiki/Just_Plane_Beep;1965-10-30;6;45
+1000000033;Hairied and Hurried;http://en.wikipedia.org/wiki/Hairied_and_Hurried;1965-11-13;6;45
+1000000034;Highway Runnery;http://en.wikipedia.org/wiki/Highway_Runnery;1965-12-11;6;45
+1000000035;Chaser on the Rocks;http://en.wikipedia.org/wiki/Chaser_on_the_Rocks;1965-12-25;6;45
+1000000036;Shot and Bothered;http://en.wikipedia.org/wiki/Shot_and_Bothered;1966-01-08;6;30
+1000000037;Out and Out Rout;http://en.wikipedia.org/wiki/Out_and_Out_Rout;1966-01-29;6;00
+1000000038;The Solid Tin Coyote;http://en.wikipedia.org/wiki/The_Solid_Tin_Coyote;1966-02-19;6;15
+1000000039;Clippety Clobbered;http://en.wikipedia.org/wiki/Clippety_Clobbered;1966-03-12;6;15
+1000000040;Sugar and Spies;http://en.wikipedia.org/wiki/Sugar_and_Spies;1966-11-05;6;20
+1000000041;Freeze Frame;http://en.wikipedia.org/wiki/Freeze_Frame_(cartoon);1979-11-27;6;05
+1000000042;Soup or Sonic;http://en.wikipedia.org/wiki/Soup_or_Sonic;1980-05-21;9;10
+1000000043;Chariots of Fur;http://en.wikipedia.org/wiki/Chariots_of_Fur;1994-12-21;7;00
+1000000044;Little Go Beep;http://en.wikipedia.org/wiki/Little_Go_Beep;2000-12-30;7;55
+1000000045;The Whizzard of Ow;http://en.wikipedia.org/wiki/The_Whizzard_of_Ow;2003-11-01;7;00
+1000000046;Coyote Falls;http://en.wikipedia.org/wiki/Coyote_Falls;2010-07-30;2;59
+1000000047;Fur of Flying;http://en.wikipedia.org/wiki/Fur_of_Flying;2010-09-24;3;03
+1000000048;Rabid Rider;http://en.wikipedia.org/wiki/Rabid_Rider;2010-12-17;3;07

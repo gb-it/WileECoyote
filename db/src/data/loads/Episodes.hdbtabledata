@@ -1,0 +1,96 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "sap.devs.demo.Wile.data::Episode.Details",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "sap.devs.demo.Wile.data.loads::Episodes.csv",
+                "has_header": true,
+                "type_config": {
+                	"delimiter": ";"
+                }
+            },
+            "import_settings": {
+                "import_columns": [
+                    "EPISODE_ID",
+					"EPISODE_NAME",
+					"EPISODE_URL",
+					"DATE",
+					"RUNTIME_MIN",
+					"RUNTIME_SEC"
+                ]
+            }
+        },
+        {
+            "target_table": "sap.devs.demo.Wile.data::Episode.Items",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "sap.devs.demo.Wile.data.loads::EpisodeItems.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "Detail.EPISODE_ID",
+					"Item.ITEM_ID"
+                ]
+            }
+        },
+        {
+            "target_table": "sap.devs.demo.Wile.data::Episode.Directors",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "sap.devs.demo.Wile.data.loads::EpisodeDirectors.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "Detail.EPISODE_ID",
+					"Contributor.NAME_ID"
+                ]
+            }
+        },
+        {
+            "target_table": "sap.devs.demo.Wile.data::Episode.Writers",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "sap.devs.demo.Wile.data.loads::EpisodeWriters.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "Detail.EPISODE_ID",
+					"Contributor.NAME_ID"
+                ]
+            }
+        },
+        {
+            "target_table": "sap.devs.demo.Wile.data::Episode.CoyoteNames",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "sap.devs.demo.Wile.data.loads::EpisodeCoyoteNames.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "Detail.EPISODE_ID",
+					"Name.NAME_ID"
+                ]
+            }
+        },
+       {
+            "target_table": "sap.devs.demo.Wile.data::Episode.RoadRunnerNames",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "sap.devs.demo.Wile.data.loads::EpisodeRoadRunnerNames.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "Detail.EPISODE_ID",
+					"Name.NAME_ID"
+                ]
+            }
+        }                 
+    ]
+}

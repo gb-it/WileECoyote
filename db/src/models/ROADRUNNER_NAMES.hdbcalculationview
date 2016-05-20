@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.devs.demo.Wile.models::ROADRUNNER_NAMES" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="ROADRUNNER_NAMES"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sap.devs.demo.Wile.data::Episode.RoadRunnerNames">
+    <resourceUri>sap.devs.demo.Wile.data::Episode.RoadRunnerNames</resourceUri>
+  </DataSource>
+  <DataSource id="sap.devs.demo.Wile.data::MasterData.PseudoLatinNames">
+    <resourceUri>sap.devs.demo.Wile.data::MasterData.PseudoLatinNames</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="EPISODE_ID">
+        <descriptions defaultDescription="Detail_EPISODE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="ROADRUNNER_NAME">
+        <descriptions defaultDescription="NAME"/>
+      </viewAttribute>
+      <viewAttribute id="JOIN$Name.NAME_ID$NAME_ID" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.devs.demo.Wile.data::Episode.RoadRunnerNames">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EPISODE_ID" source="Detail.EPISODE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Name.NAME_ID$NAME_ID" source="Name.NAME_ID"/>
+    </input>
+    <input node="sap.devs.demo.Wile.data::MasterData.PseudoLatinNames">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROADRUNNER_NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Name.NAME_ID$NAME_ID" source="NAME_ID"/>
+    </input>
+    <joinAttribute name="JOIN$Name.NAME_ID$NAME_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="EPISODE_ID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EPISODE_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="EPISODE_ID"/>
+    </attribute>
+    <attribute id="ROADRUNNER_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ROADRUNNER_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="ROADRUNNER_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="232"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.data::Episode.RoadRunnerNames" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sap.devs.demo.Wile.data::MasterData.PseudoLatinNames" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

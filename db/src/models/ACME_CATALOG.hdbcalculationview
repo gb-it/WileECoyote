@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.devs.demo.Wile.models::ACME_CATALOG" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="ACME Catalog"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sap.devs.demo.Wile.data::MasterData.ACMEItem">
+    <resourceUri>sap.devs.demo.Wile.data::MasterData.ACMEItem</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="sap.devs.demo.Wile.data::MasterData.ACMEItem">
+  <attributes>
+    <attribute id="ITEM_ID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM_ID"/>
+      <keyMapping schemaName="B9AEKIXA83AWIW8R_WILEECOYOTE_HDI_CONTAINER" columnObjectName="sap.devs.demo.Wile.data::MasterData.ACMEItem" columnName="ITEM_ID"/>
+    </attribute>
+    <attribute id="ITEM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM"/>
+      <keyMapping schemaName="B9AEKIXA83AWIW8R_WILEECOYOTE_HDI_CONTAINER" columnObjectName="sap.devs.demo.Wile.data::MasterData.ACMEItem" columnName="ITEM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="FILE_NAME" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILE_NAME"/>
+      <keyCalculation datatype="NVARCHAR" length="14" expressionLanguage="COLUMN_ENGINE">
+        <formula>if(&quot;ITEM_ID&quot; &lt;= '1000000053',&quot;ITEM_ID&quot; +'.jpg','DUMMY' +'.jpg')</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="ITEM_IMAGE_URL" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM_IMAGE_URL"/>
+      <keyCalculation datatype="NVARCHAR" length="60" expressionLanguage="COLUMN_ENGINE">
+        <formula>'/sap/devs/demo/Wile/data/images/items/' +&quot;FILE_NAME&quot;</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

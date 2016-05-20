@@ -1,0 +1,10 @@
+namespace sap.devs.demo.Wile.data;
+
+context WileECoyote {
+
+   	type BusinessKey : String(10);
+ 	type SString  : String(40);
+	type MString  : String(60);
+	type LString  : String(255); 	  
+
+};

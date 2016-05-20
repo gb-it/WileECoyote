@@ -1,0 +1,25 @@
+namespace sap.devs.demo.Wile.data;
+
+using sap.devs.demo.Wile.data::WileECoyote;
+
+context MasterData {
+
+ 	  
+      Entity ACMEItem {
+        key  ITEM_ID: WileECoyote.BusinessKey;
+        ITEM: WileECoyote.LString;
+      };
+
+      Entity PseudoLatinNames {
+        key  NAME_ID: WileECoyote.BusinessKey;
+        NAME: WileECoyote.LString;
+      };
+    
+      Entity Contributors {
+        key  NAME_ID: WileECoyote.BusinessKey;
+        NAME: WileECoyote.LString;
+        URL: WileECoyote.LString;
+      };
+                      
+
+};
