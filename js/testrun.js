@@ -1,33 +1,41 @@
+/*eslint no-console: 0*/
 "use strict";
 
-var xsjs = require("sap-xsjs");
 var xsjstest = require("sap-xsjs-test");
 var xsenv = require("sap-xsenv");
 
-var options = xsjs.extend({
+var testResultsDir = "./.testresults";
+var timestamp = Date.now();
+var testResultFileName = timestamp + "_report";
+var coverageFile = timestamp + "_coverage";
+
+var options = {
     test: {
-        format: "json",
+        format: "xml",
         pattern: ".*Test",
-        reportdir: "./"
+        reportdir: testResultsDir,
+        filename: testResultFileName
     },
     coverage: {
         reporting: {
             reports: ["json"]
         },
-        dir: "./"
+        dir: testResultsDir,
+        filename: coverageFile
     }
-});
+};
+
 
 //configure HANA
 try {
-    options = xsjs.extend(options, xsenv.getServices({ hana: {tag: "hana"} }));
+    options = Object.assign(options, xsenv.getServices({ hana: {tag: "hana"} }));
 } catch (err) {
     console.error(err);
 }
 
 // configure UAA
 try {
-    options = xsjs.extend(options, xsenv.getServices({ uaa: {tag: "xsuaa"} }));
+    options = Object.assign(options, xsenv.getServices({ uaa: {tag: "xsuaa"} }));
 } catch (err) {
     console.error(err);
 }

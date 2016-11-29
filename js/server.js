@@ -13,20 +13,19 @@ var options = xsjs.extend({
 	redirectUrl : "/index.xsjs"
 });
 
-//configure HANA
+// configure HANA
 try {
-    options = xsjs.extend(options, xsenv.getServices({ hana: {tag: "hana"} }));
+	options = Object.assign(options, xsenv.getServices({ hana: {tag: "hana"} }));
 } catch (err) {
-    console.error(err);
+	console.log("[WARN]", err.message);
 }
 
 // configure UAA
 try {
-    options = xsjs.extend(options, xsenv.getServices({ uaa: {tag: "xsuaa"} }));
+	options = Object.assign(options, xsenv.getServices({ uaa: {tag: "xsuaa"} }));
 } catch (err) {
-    console.error(err);
+	console.log("[WARN]", err.message);
 }
-
 // start server
 var xsjsApp = xsjs(options);
 app.use(xsjsApp);

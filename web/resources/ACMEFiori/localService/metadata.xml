@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices m:DataServiceVersion="2.0"
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="sap.devs.demo.Wile.services"
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="EpisodesType">
+                <Key>
+                    <PropertyRef Name="EPISODE_ID"/>
+                </Key>
+                <Property Name="DATE" Type="Edm.DateTime"/>
+                <Property Name="EPISODE_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EPISODE_NAME" Type="Edm.String" MaxLength="255"/>
+                <Property Name="EPISODE_URL" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DAY_OF_WEEK" Type="Edm.Int32"/>
+                <Property Name="YEAR" Type="Edm.Int32"/>
+                <Property Name="MONTH" Type="Edm.Int32"/>
+                <Property Name="DAY_OF_WEEK_DESC" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RUNTIME_MIN" Type="Edm.Int32"/>
+                <Property Name="RUNTIME_SEC" Type="Edm.Int32"/>
+                <Property Name="TOTAL_RUNTIME_SECS" Type="Edm.Int32"/>
+                <Property Name="EPISODES" Type="Edm.Int32"/>
+                <NavigationProperty Name="ACMEItems" Relationship="sap.devs.demo.Wile.services.ToACMEItemsType" FromRole="EpisodesPrincipal" ToRole="ACMEItemsDependent"/>
+                <NavigationProperty Name="CoyoteNames" Relationship="sap.devs.demo.Wile.services.ToCoyoteNamesType" FromRole="EpisodesPrincipal" ToRole="CoyoteNamesDependent"/>
+                <NavigationProperty Name="RoadRunnerNames" Relationship="sap.devs.demo.Wile.services.ToRoadRunnerNamesType" FromRole="EpisodesPrincipal" ToRole="RoadRunnerNamesDependent"/>
+                <NavigationProperty Name="Directors" Relationship="sap.devs.demo.Wile.services.ToDirectorsType" FromRole="EpisodesPrincipal" ToRole="DirectorsDependent"/>
+                <NavigationProperty Name="Writers" Relationship="sap.devs.demo.Wile.services.ToWritersType" FromRole="EpisodesPrincipal" ToRole="WritersDependent"/>
+            </EntityType>
+            <EntityType Name="ACMEItemsType">
+                <Key>
+                    <PropertyRef Name="EPISODE_ID"/>
+                    <PropertyRef Name="ITEM_ID"/>
+                </Key>
+                <Property Name="EPISODE_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="FILE_NAME" Type="Edm.String" MaxLength="14"/>
+                <Property Name="ITEM" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ITEM_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ITEM_IMAGE_URL" Type="Edm.String" MaxLength="60"/>
+            </EntityType>
+            <EntityType Name="ACMECatalogType">
+                <Key>
+                    <PropertyRef Name="ITEM_ID"/>
+                </Key>
+                <Property Name="ITEM_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ITEM" Type="Edm.String" MaxLength="255"/>
+                <Property Name="FILE_NAME" Type="Edm.String" MaxLength="14"/>
+                <Property Name="ITEM_IMAGE_URL" Type="Edm.String" MaxLength="60"/>
+            </EntityType>
+            <EntityType Name="CoyoteNamesType">
+                <Key>
+                    <PropertyRef Name="EPISODE_ID"/>
+                    <PropertyRef Name="NAME_ID"/>
+                </Key>
+                <Property Name="EPISODE_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="RoadRunnerNamesType">
+                <Key>
+                    <PropertyRef Name="EPISODE_ID"/>
+                    <PropertyRef Name="NAME_ID"/>
+                </Key>
+                <Property Name="EPISODE_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="DirectorsType">
+                <Key>
+                    <PropertyRef Name="EPISODE_ID"/>
+                    <PropertyRef Name="NAME_ID"/>
+                </Key>
+                <Property Name="EPISODE_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="255"/>
+                <Property Name="URL" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="WritersType">
+                <Key>
+                    <PropertyRef Name="EPISODE_ID"/>
+                    <PropertyRef Name="NAME_ID"/>
+                </Key>
+                <Property Name="EPISODE_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="255"/>
+                <Property Name="URL" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <Association Name="ToACMEItemsType">
+                <End Type="sap.devs.demo.Wile.services.EpisodesType" Role="EpisodesPrincipal" Multiplicity="1"/>
+                <End Type="sap.devs.demo.Wile.services.ACMEItemsType" Role="ACMEItemsDependent" Multiplicity="*"/>
+            </Association>
+            <Association Name="ToCoyoteNamesType">
+                <End Type="sap.devs.demo.Wile.services.EpisodesType" Role="EpisodesPrincipal" Multiplicity="1"/>
+                <End Type="sap.devs.demo.Wile.services.CoyoteNamesType" Role="CoyoteNamesDependent" Multiplicity="*"/>
+            </Association>
+            <Association Name="ToRoadRunnerNamesType">
+                <End Type="sap.devs.demo.Wile.services.EpisodesType" Role="EpisodesPrincipal" Multiplicity="1"/>
+                <End Type="sap.devs.demo.Wile.services.RoadRunnerNamesType" Role="RoadRunnerNamesDependent" Multiplicity="*"/>
+            </Association>
+            <Association Name="ToDirectorsType">
+                <End Type="sap.devs.demo.Wile.services.EpisodesType" Role="EpisodesPrincipal" Multiplicity="1"/>
+                <End Type="sap.devs.demo.Wile.services.DirectorsType" Role="DirectorsDependent" Multiplicity="*"/>
+            </Association>
+            <Association Name="ToWritersType">
+                <End Type="sap.devs.demo.Wile.services.EpisodesType" Role="EpisodesPrincipal" Multiplicity="1"/>
+                <End Type="sap.devs.demo.Wile.services.WritersType" Role="WritersDependent" Multiplicity="*"/>
+            </Association>
+            <EntityContainer Name="v2" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Episodes" EntityType="sap.devs.demo.Wile.services.EpisodesType"/>
+                <EntitySet Name="ACMEItems" EntityType="sap.devs.demo.Wile.services.ACMEItemsType"/>
+                <EntitySet Name="ACMECatalog" EntityType="sap.devs.demo.Wile.services.ACMECatalogType"/>
+                <EntitySet Name="CoyoteNames" EntityType="sap.devs.demo.Wile.services.CoyoteNamesType"/>
+                <EntitySet Name="RoadRunnerNames" EntityType="sap.devs.demo.Wile.services.RoadRunnerNamesType"/>
+                <EntitySet Name="Directors" EntityType="sap.devs.demo.Wile.services.DirectorsType"/>
+                <EntitySet Name="Writers" EntityType="sap.devs.demo.Wile.services.WritersType"/>
+                <AssociationSet Name="ToACMEItems" Association="sap.devs.demo.Wile.services.ToACMEItemsType">
+                    <End Role="EpisodesPrincipal" EntitySet="Episodes"/>
+                    <End Role="ACMEItemsDependent" EntitySet="ACMEItems"/>
+                </AssociationSet>
+                <AssociationSet Name="ToCoyoteNames" Association="sap.devs.demo.Wile.services.ToCoyoteNamesType">
+                    <End Role="EpisodesPrincipal" EntitySet="Episodes"/>
+                    <End Role="CoyoteNamesDependent" EntitySet="CoyoteNames"/>
+                </AssociationSet>
+                <AssociationSet Name="ToRoadRunnerNames" Association="sap.devs.demo.Wile.services.ToRoadRunnerNamesType">
+                    <End Role="EpisodesPrincipal" EntitySet="Episodes"/>
+                    <End Role="RoadRunnerNamesDependent" EntitySet="RoadRunnerNames"/>
+                </AssociationSet>
+                <AssociationSet Name="ToDirectors" Association="sap.devs.demo.Wile.services.ToDirectorsType">
+                    <End Role="EpisodesPrincipal" EntitySet="Episodes"/>
+                    <End Role="DirectorsDependent" EntitySet="Directors"/>
+                </AssociationSet>
+                <AssociationSet Name="ToWriters" Association="sap.devs.demo.Wile.services.ToWritersType">
+                    <End Role="EpisodesPrincipal" EntitySet="Episodes"/>
+                    <End Role="WritersDependent" EntitySet="Writers"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
